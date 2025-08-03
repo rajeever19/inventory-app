@@ -6,20 +6,20 @@ import {
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { PrismaService } from '../prisma/prisma.service';
-import { AuthDto } from './dto/auth.dto';
+import { AuthDto, SignInDto } from './dto/auth.dto';
 @Injectable()
 export class AuthService {
   constructor(
     private prisma: PrismaService,
     private jwt: JwtService,
   ) {}
-  async signin(dto: AuthDto) {
+  async signin(dto: SignInDto) {
     const user = await this.prisma.user.findUnique({
       where: { email: dto.email },
     });
 
     if (!user) {
-      throw new UnauthorizedException('Invalid credentials');
+      throw new UnauthorizedException('Email not found');
     }
 
     const isPasswordCorrect = await bcrypt.compare(dto.password, user.password);

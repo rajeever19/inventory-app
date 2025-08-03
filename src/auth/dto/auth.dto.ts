@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 export class AuthDto {
   @IsEmail()
@@ -10,4 +9,12 @@ export class AuthDto {
   @IsString()
   // @IsNotEmpty({ message: 'Full name is required' })
   fullName: string;
+}
+export class SignInDto {
+  @IsEmail()
+  @IsNotEmpty()
+  email: string;
+  @IsString()
+  @IsNotEmpty()
+  password: string;
 }
