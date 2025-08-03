@@ -7,5 +7,7 @@ export class AuthDto {
   @IsString()
   @IsNotEmpty()
   password: string;
+  @IsString()
+  // @IsNotEmpty({ message: 'Full name is required' })
   fullName: string;
 }
