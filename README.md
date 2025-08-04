@@ -1,98 +1,193 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🧾 Inventory Management API (NestJS + Prisma + PostgreSQL)
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+> A scalable backend system for managing users, products, and stock operations — powered by NestJS, Prisma ORM, and PostgreSQL.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 📌 Table of Contents
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+* [🚀 Project Vision](#-project-vision)
+* [🧩 Tech Stack](#-tech-stack)
+* [📦 Features](#-features)
+* [🔧 Installation & Setup](#-installation--setup)
+* [🧪 Testing](#-testing)
+* [🎯 Production-Ready Feature Roadmap](#-production-ready-feature-roadmap)
+* [📁 Folder Structure](#-folder-structure)
+* [💼 Why This Project](#-why-this-project)
+* [👨‍💻 About Me](#-about-me)
+* [📬 Contact](#-contact)
+* [📝 License](#-license)
 
-## Project setup
+---
+
+## 🚀 Project Vision
+
+This project is a real-world **Inventory Management API** built with scalability and modularity in mind. It serves as a demonstration of my ability to:
+
+* Design secure authentication systems (JWT-based)
+* Structure scalable modules with NestJS
+* Use ORM effectively with Prisma
+* Write clean, testable, production-ready code
+* Plan features progressively with growth in mind
+
+---
+
+## 🧩 Tech Stack
+
+| Layer          | Technology                        |
+| -------------- | --------------------------------- |
+| Framework      | NestJS                            |
+| ORM            | Prisma ORM                        |
+| Database       | PostgreSQL                        |
+| Authentication | JWT, Bcrypt                       |
+| Validation     | class-validator                   |
+| API Docs       | Swagger (Planned)                 |
+| Testing        | Jest                              |
+| CI/CD          | GitHub Actions (Planned)          |
+| Deployment     | Docker + Render/Railway (Planned) |
+
+---
+
+## 📦 Features
+
+| Module             | Status    | Description                            |
+| ------------------ | --------- | -------------------------------------- |
+| ✅ User Signup      | Completed | With hashed password & validation      |
+| ✅ User Signin      | Completed | Returns JWT after successful login     |
+| 🔐 JWT Auth Guard  | Pending   | Role-based route protection            |
+| 🛠 Product CRUD    | Planned   | Inventory creation, update, deletion   |
+| 📊 Dashboard Stats | Planned   | Inventory insights & analytics         |
+| 🔁 Refresh Tokens  | Planned   | Secure persistent login                |
+| 📑 Swagger Docs    | Planned   | Full interactive API documentation     |
+| 🧪 Unit Tests      | Completed | Auth module tested with Jest           |
+| 🚦 CI/CD           | Planned   | GitHub workflows for automated testing |
+
+---
+
+## 🔧 Installation & Setup
+
+### 1. Clone the Repository
 
 ```bash
-$ yarn install
+git clone https://github.com/YOUR_USERNAME/inventory-app.git
+cd inventory-app
 ```
 
-## Compile and run the project
+### 2. Install Dependencies
 
 ```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+npm install
 ```
 
-## Run tests
+### 3. Configure Environment
+
+Update your `.env` file:
+
+```env
+DATABASE_URL="postgresql://postgres:your_password@localhost:5432/inventory_app"
+JWT_SECRET="super-secret-key"
+```
+
+### 4. Setup Database with Prisma
 
 ```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+npx prisma migrate dev --name init
+npx prisma generate
 ```
 
-## Deployment
+> To view DB in browser: `npx prisma studio`
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### 5. Run Development Server
 
 ```bash
-$ yarn install -g @nestjs/mau
-$ mau deploy
+npm run start:dev
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Server is available at: `http://localhost:3000`
 
-## Resources
+---
 
-Check out a few resources that may come in handy when working with NestJS:
+## 🧪 Testing
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+Run all unit tests:
 
-## Support
+```bash
+npm run test
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Includes working test specs for `AuthController` and `AuthService`
 
-## Stay in touch
+---
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## 🎯 Production-Ready Feature Roadmap
 
-## License
+### 🔐 Authentication & Security
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+*
+
+### 📦 Inventory Management
+
+*
+
+### 📊 Business Features
+
+*
+
+### ⚙️ Developer & Infra Enhancements
+
+*
+
+---
+
+## 📁 Folder Structure
+
+```bash
+src/
+├── auth/            # AuthController, AuthService, DTOs
+├── user/            # User model access and services
+├── product/         # Inventory logic (planned)
+├── stock/           # Stock movement and tracking (planned)
+├── common/          # Interceptors, pipes, filters
+├── config/          # Database, JWT, and app configs
+├── guards/          # AuthGuard, RoleGuard
+├── decorators/      # Custom route decorators
+├── utils/           # Shared helper functions
+└── app.module.ts    # Root NestJS module
+```
+
+---
+
+## 💼 Why This Project?
+
+This project reflects my ability to build, test, and maintain scalable backend APIs in real-world scenarios:
+
+✅ Modular architecture and separation of concerns
+✅ Secure user authentication with hashed passwords
+✅ DTO-based validation and transformation
+✅ Test-driven mindset using Jest
+✅ Progressive roadmap for scale
+✅ Real deployment planning (Docker + CI/CD)
+
+---
+
+## 👨‍💻 About Me
+
+**Rajeev Ranjan** — Frontend Developer transitioning to Full Stack Development 🚀
+
+* 🧠 Currently mastering NestJS, Prisma, PostgreSQL
+* 💬 Open to Backend and Full Stack roles
+* 🛠 Constantly building real-world projects to grow
+
+---
+
+## 📬 Contact
+
+📧 Email: [rajeevranjan54545@gmail.com](mailto:rajeevranjan54545@gmail.com)
+💼 LinkedIn: [linkedin.com/in/](https://www.linkedin.com/in/YOUR_USERNAME)rajeevranjanse
+🌐 Portfolio: Coming Soon
+
+---
+
+## 📝 License
+
+MIT License — you're free to use, modify, and distribute.
